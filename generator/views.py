@@ -8,7 +8,7 @@ import base64
 import django
 import markdown2
 
-client = genai.Client(api_key='AIzaSyB-9RSYN1-UrIv_gtnTOwDuDidaTDCUM-s')
+client = genai.Client(api_key='Nokki Irunno Ippo Tharam')
 # Create your views here.
 django.setup()
 global var
