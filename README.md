@@ -35,6 +35,7 @@ pip install -r requirements.txt
 
 
 # Run
+Go to Generator --> views.py and update your gemini api_key at api_key=
 in root folder :
 python manage.py runserver
 
