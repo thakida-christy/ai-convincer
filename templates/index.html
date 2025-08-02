@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with AI</title>
+    <style>
+        /* --- Google Font --- */
+        @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap');
+
+        /* --- Basic Reset & Body Style --- */
+        body {
+            font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f0f4f9;
+            color: #1f1f1f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- Main Container --- */
+        .main-container {
+            width: 100%;
+            max-width: 800px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* --- Header Section --- */
+        .header-content {
+            padding-bottom: 40px;
+        }
+
+        .header-content h1 {
+            font-size: 3.5rem;
+            font-weight: 500;
+            margin: 0;
+            background: -webkit-linear-gradient(45deg, #4285F4, #9B72CB, #D96570, #F2A60C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-content h2 {
+            font-size: 3.4rem;
+            font-weight: 500;
+            color: #c4c7c5;
+            margin: 0;
+        }
+
+        /* --- Input Area --- */
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: #e3e8ee;
+            border-radius: 28px;
+            padding: 4px 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        #userInput {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            resize: none;
+            font-size: 1.1rem;
+            color: #3c4043;
+            padding: 16px 50px 16px 0; /* Right padding for the button */
+            line-height: 1.5;
+            font-family: inherit;
+        }
+
+        #userInput::placeholder {
+            color: #5f6368;
+            opacity: 0.8;
+        }
+
+        #submitBtn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #d3e3fd;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        #submitBtn:hover {
+            background-color: #a8c7fa;
+        }
+
+        #submitBtn svg {
+            width: 20px;
+            height: 20px;
+            fill: #0b57d0;
+        }
+        
+        /* --- Footer --- */
+        .footer-text {
+            font-size: 0.75rem;
+            color: #5f6368;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer-text a {
+            color: #5f6368;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="header-content">
+            <h1>Hello, User</h1>
+            <h2>Welcome to AI Image Generator</h2>
+        </div>
+
+        <div>
+            <div class="input-wrapper">
+                <form action="page2" method="post">
+                    {% csrf_token %}
+                    <textarea id="userInput" name="userInput" rows="1" placeholder="Enter a prompt here"></textarea>
+                    <button id="submitBtn" title="Submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+    
+            <p class="footer-text">
+                The Generated image maybe not what you wanted. Please dont double check.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Auto-resize textarea to fit content
+        const textarea = document.getElementById('userInput');
+        textarea.addEventListener('input', () => {
+            textarea.style.height = 'auto'; // Reset height
+            textarea.style.height = `${textarea.scrollHeight}px`; // Set to scroll height
+        });
+
+
+    </script>
+
+</body>
+</html>

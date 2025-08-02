@@ -1,0 +1,49 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Image Preview</title>
+</head>
+<style>
+    body{
+        /* Remove default margin and set full viewport height */
+        margin: 0;
+        height: 100vh;
+
+        /* Use Flexbox to center content */
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center;   /* Center vertically */
+        
+        /* Apply a Gemini-inspired dark gradient background */
+        background-color: #131314; /* Fallback color */
+        background-image: radial-gradient(circle, #424669, #131314);
+    }
+
+    img{
+        /* Ensure the image is responsive and doesn't exceed screen size */
+        max-width: 90%;
+        max-height: 90vh;
+        
+        /* Optional: Add a subtle border radius and shadow for better presentation */
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    }
+    audio {
+        display: none;
+    }
+
+</style>
+<body>
+        <img src="{%static 'final.jpeg'%}" alt="A portrait of a man with glasses and a blue shirt">
+        <audio src="{%static 'last.mp3'%}" controls autoplay id="music-player"></audio>
+    <script>
+        // Get the elements
+        const player = document.getElementById('music-player');
+        const play = document.getElementById('playbtn');
+        play.onclick = player.play()
+    </script>
+</body>
+</html>
